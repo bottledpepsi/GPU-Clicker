@@ -1,4 +1,4 @@
-# NVIDIA Clicker
+# GPU Clicker
 
 This is a web game made with HTML, CSS, and JavaScript.
 
@@ -11,4 +11,4 @@ This is a web game made with HTML, CSS, and JavaScript.
 2. **Website:**
 
    You can test right now at:
-   **[https://bottledpepsi.github.io/nvidia-clicker-game/](https://bottledpepsi.github.io/nvidia-clicker-game/)**
+   **[bottledpepsi.github.io/nvidia-clicker-game](https://bottledpepsi.github.io/nvidia-clicker-game/)**
