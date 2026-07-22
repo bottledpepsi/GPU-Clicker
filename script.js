@@ -1,7 +1,7 @@
 'use strict';
 
 /* =========================================================================
-   NVIDIA CLICKER — core script
+   GPU Clicker — core script
    A from-scratch rewrite. Architecture inspired by Cookie Clicker's
    buildings/upgrades/shimmer model (flat 1.15x cost growth, "owns >= N"
    upgrade unlocks, a shimmer pool with several effect types, and a light
@@ -10,7 +10,7 @@
 
 // ===== LOGGER =====
 const log = (() => {
-    const PREFIX = '%c[NVC]%c';
+    const PREFIX = '%c[GPUC]%c';
     const BASE   = 'color:#76B900;font-weight:bold';
     const RESET  = 'color:inherit;font-weight:normal';
     return {
@@ -929,8 +929,8 @@ GpuClicker.prototype.updateDisplay = function (full) {
     this._setText('fpsValue', shortenNumber(fps));
 
     document.title = this.settings.titleFPS
-        ? `${shortenNumber(fps)}/s – NVIDIA Clicker`
-        : `${shortenNumber(this.state.frames)} Frames – NVIDIA Clicker`;
+        ? `${shortenNumber(fps)}/s – GPU Clicker`
+        : `${shortenNumber(this.state.frames)} Frames – GPU Clicker`;
 
     // Buildings — price text only needs refresh every frame; row reveal logic
     // (full=true) on purchases / load.
@@ -1143,28 +1143,28 @@ document.addEventListener('DOMContentLoaded', () => {
     game.initBuyQtyDisplay();
 
     // ===== CONSOLE COMMANDS =====
-    window.NVC = Object.freeze({
+    window.GPUC = Object.freeze({
         help() {
-            console.group('%c[NVC] Available commands', 'color:#76B900;font-weight:bold');
+            console.group('%c[GPUC] Available commands', 'color:#76B900;font-weight:bold');
             const cmds = [
-                ['NVC.help()',                 'Print this command list'],
-                ['NVC.debug()',                'Print all current game values'],
-                ['NVC.setFrames(n)',           'Set current frames to n'],
-                ['NVC.addFrames(n)',           'Add n frames (negative to subtract)'],
-                ['NVC.setBuilding(i, count)',  'Set owned count for building index i'],
-                ['NVC.buyAllBuildings(count)', 'Set every building to count'],
-                ['NVC.unlockAllUpgrades()',    'Mark all shop upgrades as purchased'],
-                ['NVC.triggerChip()',          'Force the Golden Chip to appear now'],
-                ['NVC.setDriverPoints(n)',     'Set Driver Points directly (debug only)'],
-                ['NVC.resetSave()',            'Wipe localStorage save and reload'],
-                ['NVC.exportSave()',           'Print save JSON to console'],
-                ['NVC.importSave(json)',       'Load a save from a JSON string'],
+                ['GPUC.help()',                 'Print this command list'],
+                ['GPUC.debug()',                'Print all current game values'],
+                ['GPUC.setFrames(n)',           'Set current frames to n'],
+                ['GPUC.addFrames(n)',           'Add n frames (negative to subtract)'],
+                ['GPUC.setBuilding(i, count)',  'Set owned count for building index i'],
+                ['GPUC.buyAllBuildings(count)', 'Set every building to count'],
+                ['GPUC.unlockAllUpgrades()',    'Mark all shop upgrades as purchased'],
+                ['GPUC.triggerChip()',          'Force the Golden Chip to appear now'],
+                ['GPUC.setDriverPoints(n)',     'Set Driver Points directly (debug only)'],
+                ['GPUC.resetSave()',            'Wipe localStorage save and reload'],
+                ['GPUC.exportSave()',           'Print save JSON to console'],
+                ['GPUC.importSave(json)',       'Load a save from a JSON string'],
             ];
             console.table(cmds.map(([cmd, desc]) => ({ command: cmd, description: desc })));
             console.groupEnd();
         },
         debug() {
-            console.group('%c[NVC] Debug snapshot', 'color:#76B900;font-weight:bold');
+            console.group('%c[GPUC] Debug snapshot', 'color:#76B900;font-weight:bold');
             console.log('frames:', shortenNumber(game.state.frames), `(${game.state.frames})`);
             console.log('lifetime:', shortenNumber(game.state.lifetimeFrames));
             console.log('fps:', shortenNumber(game.calcFPS()), 'raw:', shortenNumber(game.rawFps()));
@@ -1230,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    console.log('%c[NVC]%c Type %cNVC.help()%c for console commands.',
+    console.log('%c[GPUC]%c Type %cGPUC.help()%c for console commands.',
         'color:#76B900;font-weight:bold', 'color:inherit',
         'color:#76B900;font-weight:bold', 'color:inherit');
 });
