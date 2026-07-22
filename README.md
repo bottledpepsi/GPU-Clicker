@@ -6,9 +6,9 @@ This is a web game made with HTML, CSS, and JavaScript.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/bottledpepsi/nvidia-clicker-game.git
+   git clone https://github.com/bottledpepsi/GPU-Clicker.git
 
 2. **Website:**
 
    You can test right now at:
-   **[bottledpepsi.github.io/nvidia-clicker-game](https://bottledpepsi.github.io/nvidia-clicker-game/)**
+   **[bottledpepsi.github.io/GPU-Clicker](https://bottledpepsi.github.io/GPU-Clicker/)**
