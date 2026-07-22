@@ -131,9 +131,7 @@ body.reduced-motion * { animation: none !important; transition: none !important;
 #clicker {
     width: 260px; height: 260px;
     cursor: pointer; user-select: none; -webkit-user-drag: none;
-    border-radius: 50%;
     transition: transform var(--ease), filter var(--ease), box-shadow var(--ease);
-    box-shadow: 0 0 0 1px var(--border-g), 0 0 30px rgba(118,185,0,0.13), 0 8px 40px rgba(0,0,0,0.5);
     filter: drop-shadow(0 0 10px rgba(118,185,0,0.22));
     display: block;
 }
