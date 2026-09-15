@@ -1,14 +1,12 @@
 # GPU Clicker
 
-This is a web game made with HTML, CSS, and JavaScript.
+A game about rendering frames. Buy GPUs, catch Golden Chips, and update your drivers.
 
-## Installation & Usage
+**Play:** [bottledpepsi.github.io/GPU-Clicker](https://bottledpepsi.github.io/GPU-Clicker/)
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/bottledpepsi/GPU-Clicker.git
+## Run locally
 
-2. **Website:**
-
-   You can test right now at:
-   **[bottledpepsi.github.io/GPU-Clicker](https://bottledpepsi.github.io/GPU-Clicker/)**
+```bash
+npm install
+npm run dev
+```

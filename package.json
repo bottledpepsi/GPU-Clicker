@@ -1,0 +1,21 @@
+{
+  "name": "gpu-clicker",
+  "private": true,
+  "version": "4.0.0",
+  "type": "module",
+  "description": "An incremental game about rendering frames.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "balance": "node tools/simulate-balance.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.2"
+  }
+}
