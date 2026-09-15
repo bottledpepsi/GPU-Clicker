@@ -63,7 +63,16 @@ export default function GoldenChip({ state, onCollect, onMiss, reducedMotion }) 
   const collect = (event) => {
     if (!chip || chip.leaving) return;
     clearTimeout(hideTimer.current);
-    onCollect(chip.effect, { x: event.clientX, y: event.clientY });
+
+    const rect = fieldRef.current?.getBoundingClientRect();
+    const point = rect
+      ? {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        }
+      : { x: event.clientX, y: event.clientY };
+
+    onCollect(chip.effect, point);
     setChip({ ...chip, leaving: true });
     setTimeout(() => setChip(null), 320);
     scheduleNext();

@@ -39,6 +39,7 @@ export default function App() {
 
   const [modal, setModal] = useState(null);
   const [railOpen, setRailOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
   // Keys that were purchased in the last few hundred ms, for the buy flash.
   const [recentBuys, setRecentBuys] = useState(() => new Set());
@@ -179,6 +180,11 @@ export default function App() {
 
   const closeModal = useCallback(() => setModal(null), []);
 
+  const openNavModal = useCallback((id) => {
+    setMenuOpen(false);
+    setModal(id);
+  }, []);
+
   const navItems = useMemo(() => [
     { id: 'stats', label: 'Stats', Icon: IconChart },
     { id: 'achievements', label: 'Achievements', Icon: IconTrophy, count: `${achEarned}/${ACHIEVEMENTS.length}` },
@@ -192,9 +198,9 @@ export default function App() {
         <button
           type="button"
           className="rail-toggle"
-          onClick={() => setRailOpen((v) => !v)}
-          aria-label="Toggle telemetry"
-          aria-expanded={railOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <IconMenu />
         </button>
@@ -205,14 +211,14 @@ export default function App() {
 
         <div className="topbar-spacer" />
 
-        <nav className="topbar-nav">
+        <nav className="topbar-nav" data-open={menuOpen} aria-label="Main menu">
           {navItems.map(({ id, label, Icon, count, tone, dot }) => (
             <button
               key={id}
               type="button"
               className="nav-btn"
               data-tone={tone}
-              onClick={() => setModal(id)}
+              onClick={() => openNavModal(id)}
             >
               <Icon />
               <span>{label}</span>

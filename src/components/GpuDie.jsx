@@ -21,12 +21,11 @@ export default function GpuDie({ fps, clickValue, buffed, onClick, settings, for
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
-    // Keyboard activation has no coordinates — fall back to centre.
     const hasPoint = event.clientX !== 0 || event.clientY !== 0;
     const x = hasPoint ? event.clientX - rect.left : rect.width / 2;
     const y = hasPoint ? event.clientY - rect.top : rect.height / 2;
 
-    onClick({ x: event.clientX, y: event.clientY });
+    onClick({ x, y });
 
     if (reduced) return;
 

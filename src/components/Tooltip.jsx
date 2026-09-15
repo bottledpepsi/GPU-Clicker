@@ -10,15 +10,17 @@ export default function Tooltip({ anchor, children }) {
     const rect = anchor.getBoundingClientRect();
     const tip = ref.current.getBoundingClientRect();
     const gap = 10;
+    const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
 
     let left = rect.left - tip.width - gap;
-    if (left < gap) left = rect.right + gap;                 // flip right
-    if (left + tip.width > window.innerWidth - gap) {
-      left = Math.max(gap, window.innerWidth - tip.width - gap);
+    if (left < gap) left = rect.right + gap;
+    if (left + tip.width > viewportWidth - gap) {
+      left = Math.max(gap, viewportWidth - tip.width - gap);
     }
 
     let top = rect.top + rect.height / 2 - tip.height / 2;
-    top = Math.min(Math.max(gap, top), window.innerHeight - tip.height - gap);
+    top = Math.min(Math.max(gap, top), viewportHeight - tip.height - gap);
 
     setPos({ left, top });
   }, [anchor, children]);

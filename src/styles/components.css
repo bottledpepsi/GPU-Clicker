@@ -215,13 +215,15 @@
 .die-button {
   position: relative;
   display: block;
-  width: min(300px, 40vmin);
+  width: min(300px, min(48vw, 48vh), 78vmin);
+  max-width: min(100%, 320px);
   aspect-ratio: 1;
   border-radius: var(--r-lg);
   filter: drop-shadow(0 0 10px rgba(118, 185, 0, 0.22));
   transition: transform var(--ease), filter var(--ease);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  min-width: 160px;
 }
 
 .die-button:hover {
@@ -283,6 +285,7 @@
 .buff-strip {
   flex-shrink: 0;
   width: min(420px, 100%);
+  max-width: min(100%, 420px);
   display: flex;
   flex-direction: column;
   gap: var(--s2);
@@ -420,7 +423,8 @@
 .buy-qty-label { font-size: var(--t-10); color: var(--text-muted); letter-spacing: 0.1em; margin-right: var(--s1); }
 
 .buy-qty-btn {
-  padding: 5px 12px;
+  padding: 7px 12px;
+  min-height: 32px;
   background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -1013,14 +1017,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--s3);
+  gap: clamp(4px, 1vw, var(--s3));
   height: var(--foot);
+  padding: 0 calc(var(--s3) + var(--safe-right)) 0 calc(var(--s3) + var(--safe-left));
   border-top: 1px solid var(--border);
   background: var(--bg2);
   font-family: var(--font-mono);
-  font-size: var(--t-10);
+  font-size: clamp(9px, 1.4vw, 11px);
   color: var(--text-muted);
   letter-spacing: 0.04em;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
 .footer span { opacity: 0.4; }
@@ -1043,9 +1050,51 @@
 .reduce-motion .die-sweep { transform: translateX(160px); opacity: 0.4; }
 
 
-@media (max-width: 940px) {
-  .die-button { width: min(220px, 52vmin); }
-  .frame-counter { font-size: 28px; }
+@media (max-width: 980px) {
+  .die-button { width: min(220px, 52vmin); min-width: 140px; }
+  .frame-counter { font-size: clamp(24px, 6vw, 30px); }
   .ach-grid { grid-template-columns: 1fr; }
   .stage-head, .buff-strip { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    padding-left: clamp(10px, 3vw, 16px);
+    padding-right: clamp(10px, 3vw, 16px);
+    gap: 10px;
+  }
+
+  .stage-head {
+    padding: var(--s4) var(--s3);
+  }
+
+  .die-button {
+    width: min(72vw, 280px);
+    min-width: 120px;
+  }
+
+  .buff-strip {
+    width: min(100%, 360px);
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .stage {
+    justify-content: flex-start;
+    padding-top: calc(var(--s3) + var(--safe-top));
+    padding-bottom: calc(var(--s3) + var(--safe-bottom));
+  }
+
+  .stage-head {
+    padding: 10px 12px;
+  }
+
+  .die-button {
+    width: min(30vh, 200px);
+    min-width: 110px;
+  }
+
+  .buff-strip {
+    width: min(100%, 320px);
+  }
 }
